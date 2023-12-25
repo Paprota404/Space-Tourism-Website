@@ -25,6 +25,7 @@
   width:60%;
   opacity: 0.2515;
   background: #FFF;
+  z-index:2;
   
 }
 
@@ -36,6 +37,7 @@
   width: 48px;
   height: 48px; 
   filter: brightness(1);
+  z-index:2;
 }
 
 
@@ -55,7 +57,6 @@ text-decoration:none;
   text-decoration:underline;
   text-underline-offset: 2rem;
   text-decoration-thickness: 3px;
-  
 }
 
 a:hover{
@@ -65,9 +66,9 @@ a:hover{
   opacity: 0.5021;
 }
 
+
+
 body{
-  
-  background-size:cover;
   margin:0;
   width: 100vw;
   height: 100vh;
@@ -99,6 +100,7 @@ font-weight: 400;
 line-height: normal;
 letter-spacing: 4.725px;
 text-align:left;
+margin:1rem;
 }
 
 #subheading2{
@@ -129,7 +131,9 @@ font-size: 100px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
+
 }
+
 h3{
   color: #FFF;
 
@@ -171,7 +175,7 @@ text-align:left;
   justify-content: center;
   align-items: flex-start;
   gap: 24px;
-  width:24%;
+  width:28%;
   position:absolute;
   left:15%;
   top:33%;
@@ -221,4 +225,42 @@ text-align:left;
   left:20%;
   display:flex;
   color:white;
+}
+
+#planet{
+  position:absolute;
+  left:22%;
+  top:38%;
+}
+
+#planets{
+  display:flex;
+
+  
+}
+
+#planeta{
+  margin-right:3rem;
+  font-size:1rem;
+}
+
+#planet-description{
+  position:absolute;
+  top:35%;
+  right:10%;
+  width: 30%;
+  display:flex-column;
+  flex-shrink: 0;
+  text-align:left;
+}
+
+#addons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+    
+}
+
+#planet-name{
+  margin-bottom:2rem;
+  margin-top:3rem;
 }
