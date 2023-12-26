@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import './App.css'
-
+import Crew from './Crew';
 import Destination from './Destination';
 import backgroundImg from '/background-home-desktop.jpg'
+import Technology from './Technology'
 
 
 
@@ -38,8 +39,8 @@ function App() {
      
       {currentSection === '00 Home' && <Home setCurrentSection={setCurrentSection}/>}
       {currentSection === '01 Destination' && <Destination />}
-      {/*{currentSection === '02 Crew' && <Crew />}
-       {currentSection === '03 Technology' && <Technology />} */}
+      {currentSection === '02 Crew' && <Crew />}
+      {currentSection === '03 Technology' && <Technology />} 
       
     </>
   )

@@ -89,6 +89,7 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;
 text-transform: uppercase;
+margin:0;
 }
 
 h5{
@@ -143,6 +144,7 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;
 text-transform: uppercase;
+margin:0;
 }
 
 h1{
@@ -179,6 +181,7 @@ text-align:left;
   position:absolute;
   left:15%;
   top:33%;
+  text-align:left;
 }
 
 #explore{
@@ -222,21 +225,19 @@ text-align:left;
 #destination{
   position:absolute;
   top:20%;
-  left:20%;
+  left:14%;
   display:flex;
   color:white;
 }
 
 #planet{
   position:absolute;
-  left:22%;
+  left:18%;
   top:38%;
 }
 
 #planets{
   display:flex;
-
-  
 }
 
 #planeta{
@@ -263,4 +264,53 @@ text-align:left;
 #planet-name{
   margin-bottom:2rem;
   margin-top:3rem;
+}
+
+#crew-image{
+  position:absolute;
+  margin:0;
+  bottom:0%;
+  right:13%;
+}
+
+#crew-button{
+  position:absolute;
+  bottom:13%;
+  left:15%;
+}
+
+#tech-buttons{
+  position:absolute;
+  display:grid;
+  top:41%;
+  left:15%;
+  gap:3rem;
+}
+
+#technology-button{
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  border-radius:50%;
+  stroke-width: 1px;
+  stroke: #FFF;
+  
+ 
+}
+
+#tech-number{
+color: #FFF;
+text-align: center;
+font-family: Bellefair;
+font-size: 32px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 2px;
+}
+
+#technology-image{
+  position:absolute;
+  right:0%;
+  top:30%;
 }
