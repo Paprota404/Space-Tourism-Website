@@ -1,13 +1,15 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Crew from './Crew';
 import Destination from './Destination';
-import backgroundImg from '/background-home-desktop.jpg'
-import Technology from './Technology'
+import backgroundImgDesktop from '/background-home-desktop.jpg';
+import backgroundImgMobile from '/background-home-mobile.jpg';
+import backgroundImgTablet from '/background-home-tablet.jpg';
+import Technology from './Technology';
 
 
 
-const sections = ['00 Home', '01 Destination', '02 Crew', '03 Technology'];
+const sections = ['Home', 'Destination', 'Crew', 'Technology'];
 
 function App() {
   const [currentSection, setCurrentSection] = useState(sections[0]);
@@ -37,20 +39,48 @@ function App() {
       
       
      
-      {currentSection === '00 Home' && <Home setCurrentSection={setCurrentSection}/>}
-      {currentSection === '01 Destination' && <Destination />}
-      {currentSection === '02 Crew' && <Crew />}
-      {currentSection === '03 Technology' && <Technology />} 
+      {currentSection === 'Home' && <Home setCurrentSection={setCurrentSection}/>}
+      {currentSection === 'Destination' && <Destination />}
+      {currentSection === 'Crew' && <Crew />}
+      {currentSection === 'Technology' && <Technology />} 
       
     </>
   )
 }
 
+//ma sie zmieniac backgroudn image on resize
+
 export default App
 
 function Home({setCurrentSection}){
+
+  const [backgroundImage,setBackgroundImage] = useState(backgroundImgDesktop);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 600) {
+        setBackgroundImage(backgroundImgMobile);
+      } else if(window.innerWidth < 1200) {
+        setBackgroundImage(backgroundImgTablet);
+      }
+      else{
+        setBackgroundImage(backgroundImgDesktop)
+      }
+    };
+ 
+    window.addEventListener('resize', handleResize);
+ 
+    // Call the function once to set the initial image
+    handleResize();
+ 
+    // Clean up event listener on unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
-      <div style={{backgroundImage:`url(${backgroundImg})`,
+      <div style={{backgroundImage:`url(${backgroundImage})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center center',
       position:"absolute",
@@ -60,7 +90,7 @@ function Home({setCurrentSection}){
           
           
       <button id="explore" >EXPLORE</button>
-      <button id="hidden" onClick={() => setCurrentSection('01 Destination')}></button>
+      <button id="hidden" onClick={() => setCurrentSection('Destination')}></button>
       <div id="introduction">
           <h5 >SO,YOU WANT TRAVEL TO SPACE</h5>
           <h1 id="space">SPACE</h1>
