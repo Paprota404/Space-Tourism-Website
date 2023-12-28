@@ -1,9 +1,10 @@
 import backgroundImg from '/background-destination-desktop.jpg';
 import Moon from '/image-moon.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Mars from '/image-mars.png';
 import Titan from '/image-titan.png';
 import Europa from '/image-europa.png'
+import backgroundImgMobile from "/background-destination-mobile.jpg";
 
 export default function Destination(){
 
@@ -12,12 +13,37 @@ export default function Destination(){
 function changePlanet(planeta){
     setPlanet(planeta);
 }
+const [backgroundImage,setBackgroundImage] = useState(backgroundImg);
+
+useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 600) {
+        setBackgroundImage(backgroundImgMobile);
+      }
+      else{
+        setBackgroundImage(backgroundImg)
+      }
+    };
+ 
+    window.addEventListener('resize', handleResize);
+ 
+    // Call the function once to set the initial image
+    handleResize();
+ 
+    // Clean up event listener on unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+
 
     return (
-<div style={{backgroundImage:`url(${backgroundImg})`,
+<div style={{backgroundImage:`url(${backgroundImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
-        height: '100vh',
+        backgroundAttachment: 'fixed', 
+        height: '100%',
         position:"absolute",
         zIndex:"1",
         width: '100%'}}>
@@ -39,7 +65,7 @@ function changePlanet(planeta){
         <h2 id="planet-name">{planet.name}</h2>
 
         <article>{planet.desc}</article>
-        <hr style={{opacity:"0.2",marginTop:"3rem",marginBottom:"2rem"}}></hr>
+        <hr id="planet-line" style={{opacity:"0.2",marginTop:"3rem",marginBottom:"2rem"}}></hr>
 
         <div id="addons">
         <span id="subheading2">Avg. distance</span>

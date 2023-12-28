@@ -38,10 +38,10 @@ const changeOpacity = (setter) => {
 
             <div id="introduction">
                 <h4 style={{opacity: 0.5042,marginTop:"5rem"}}>{crew.rank}</h4>
-                <h3 style={{width:"1000px"}}>{crew.name}</h3>
-                <article>{crew.desc}</article>
+                <h3 id="crew-name" >{crew.name}</h3>
+                <article id="crew-desc">{crew.desc}</article>
             </div>
-                <svg id="crew-button" style={{marginTop:"4rem"}} xmlns="http://www.w3.org/2000/svg" width="132" height="15" viewBox="0 0 132 15" fill="none">
+                <svg id="crew-button" xmlns="http://www.w3.org/2000/svg" width="132" height="15" viewBox="0 0 132 15" fill="none">
 
 
                 <a onClick={()=>changeCrewMember({rank:"Commander",name:"DOUGLAS HURLEY",desc:"Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2.",image:"/image-douglas-hurley.png"})}>

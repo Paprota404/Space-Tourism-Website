@@ -92,7 +92,7 @@ function Home({setCurrentSection}){
       <button id="explore" >EXPLORE</button>
       <button id="hidden" onClick={() => setCurrentSection('Destination')}></button>
       <div id="introduction">
-          <h5 >SO,YOU WANT TRAVEL TO SPACE</h5>
+          <h5 >SO,YOU WANT TRAVEL TO</h5>
           <h1 id="space">SPACE</h1>
           <article id="intro">Let’s face it; if you want to go to space, you might as well genuinely go to 
           outer space and not hover kind of on the edge of it. Well sit back, and relax 
