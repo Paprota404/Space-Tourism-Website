@@ -14,6 +14,34 @@ function changePlanet(planeta){
     setPlanet(planeta);
 }
 const [backgroundImage,setBackgroundImage] = useState(backgroundImg);
+const [backgroundHeight, setBackgroundHeight] = useState(100);
+
+useEffect(() => {
+  const handleResizes = () => {
+    if (window.innerWidth < 600) {
+      setBackgroundHeight(170);
+    } else if(window.innerWidth>600&&window.innerWidth<1200)
+      setBackgroundHeight(140);
+    else {
+      setBackgroundHeight(100);
+    }
+  };
+ 
+  window.addEventListener('resize', handleResizes);
+ 
+  // Call the function once to set the initial height
+  handleResizes();
+ 
+  // Clean up event listener on unmount
+  return () => {
+    window.removeEventListener('resize', handleResizes);
+  };
+ }, []);
+ 
+
+
+
+
 
 useEffect(() => {
     const handleResize = () => {
@@ -43,7 +71,7 @@ useEffect(() => {
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         backgroundAttachment: 'fixed', 
-        height: '100%',
+        height: `${backgroundHeight}%`,
         position:"absolute",
         zIndex:"1",
         width: '100%'}}>
@@ -55,7 +83,7 @@ useEffect(() => {
             <div id="planets">
                 <a id="planeta" onClick={()=>changePlanet({name:"MOON",desc:"See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.",dist:"384,400 km",time:"3 days",link:"/image-moon.png"})} >MOON</a>
 
-                <a id="planeta" onClick={()=>changePlanet({name:"MARS",desc:"Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons, the tallest planetary mountainin our solar system. It’s two and a half times the size of Everest!",dist:"225 mil. km", time:"9 months",link:"/image-mars.png"})} >MARS</a>
+                <a id="planeta" onClick={()=>changePlanet({name:"MARS",desc:"Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons, the tallest planetary mountainin our solar system. It’s two and a half times the size of Everest! I want to fly here someday hehe",dist:"225 mil. km", time:"9 months",link:"/image-mars.png"})} >MARS</a>
 
                 <a id="planeta" onClick={()=>changePlanet({name:"EUROPA",desc:"The smallest of the four Galilean moons orbiting Jupiter, Europa is a winter lover’s dream. With an icy surface, it’s perfect for a bit of ice skating, curling, hockey, or simple relaxation in your snug wintery cabin.",dist:"628 mil. km", time:"3 years",link:"/image-europa.png"})}>EUROPA</a>
 

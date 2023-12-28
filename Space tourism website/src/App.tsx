@@ -55,16 +55,20 @@ export default App
 function Home({setCurrentSection}){
 
   const [backgroundImage,setBackgroundImage] = useState(backgroundImgDesktop);
+  const [backgroundHeight, setBackgroundHeight] = useState(100);
 
+  
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 600) {
         setBackgroundImage(backgroundImgMobile);
+        setBackgroundHeight(120);
       } else if(window.innerWidth < 1200) {
         setBackgroundImage(backgroundImgTablet);
       }
       else{
-        setBackgroundImage(backgroundImgDesktop)
+        setBackgroundImage(backgroundImgDesktop);
+        setBackgroundHeight(100);
       }
     };
  
@@ -85,7 +89,7 @@ function Home({setCurrentSection}){
       backgroundPosition: 'center center',
       position:"absolute",
       zIndex:"1",
-      height: '100vh',
+      height: `${backgroundHeight}%`,
       width: '100%'}}>
           
           

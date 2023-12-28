@@ -159,7 +159,7 @@ margin:0;
 article{
   color: #D0D6F9;
 font-family: Barlow;
-font-size: 1rem;
+font-size: 1.1rem;
 font-style: normal;
 font-weight: 400;
 line-height: 2rem;
@@ -229,21 +229,20 @@ line-height: 2rem;
     width: 30%;
     text-align:left;
   }
-  #crew-button{
-    bottom:13%;
-    position:absolute;
-    left:15%;
+  #crew-image{
+    right:15%;
   }
   #technology-image{
     right:0%;
     top:30%;
   }
   #tech-buttons{
-    top:41%;
-    left:15%;
+    top:20%;
+    left:-30%;
     gap:3rem;
     display:grid;
     position:absolute;
+    
   }
 }
 
@@ -256,25 +255,18 @@ line-height: 2rem;
   }
   #planet-description{
     position:fixed;
-    bottom:50%;
+    bottom:60%;
   }
-  #addons{
-    display:none !important;
-  }
-  #planet-line{
-    display:none;
-  }
+ 
+ 
   #crew-name{
     font-size:2rem;
   }
   #crew-image{
-    width: 50% !important;;
+    width: 20rem !important;;
   }
   #crew-desc{
     font-size:14px
-  }
-  #crew-button{
-    margin-top:3rem !important;;
   }
   #planet-name{
     font-size:4rem;
@@ -287,10 +279,10 @@ line-height: 2rem;
     width:100%;
     margin-top:0;
     height:6rem;
-    
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
   #hidden{
-    position: fixed;
+    position: absolute;
     left: 50%;
     bottom: 0;
     transform: translate(-50%, -20%);
@@ -306,7 +298,7 @@ line-height: 2rem;
       cursor:pointer;
   }
   #explore{
-    position: fixed;
+    position: absolute;
     left: 50%;
     bottom: 0;
     transform: translate(-50%, -20%);
@@ -327,13 +319,19 @@ line-height: 2rem;
   #planet{
     width:20%;
   }
+  #technology-button{
+    width:4rem !important;
+  }
+  .technology-intro{
+    top: 40% !important;
+  }
 }
 
 @media (min-width:600px) and (max-width:1200px) {
   #navbar{
     margin-top:0rem;
     width:450px;
-    height:120px;
+    height:100px;
     
   }
 }
@@ -347,7 +345,7 @@ line-height: 2rem;
     margin:-1rem;
   }
   h1{
-   font-size:9rem;
+   font-size:7rem;
     }
   
   #introduction{
@@ -359,14 +357,14 @@ line-height: 2rem;
     width:70%;
   }
   #hidden{
-    position: fixed;
+    position: absolute;
     left: 50%;
     bottom: 0;
     transform: translate(-50%, -20%);
     margin: 0 auto;
       border-radius:50%;
-      width: 274px;
-      height: 274px;
+      width: 220px;
+      height: 220px;
       flex-shrink: 0;
       border-radius: 274px;
       opacity: 0.1036;
@@ -375,14 +373,13 @@ line-height: 2rem;
       cursor:pointer;
   }
   #explore{
-    position: fixed;
+    position: absolute;
     left: 50%;
     bottom: 0;
     transform: translate(-50%, -20%);
     margin: 0 auto;
-  
-    width: 274px;
-    height: 274px;
+    width: 220px;
+    height: 220px;
     flex-shrink: 0;
     border-radius: 274px;
     background: #FFF;
@@ -421,36 +418,28 @@ line-height: 2rem;
     width:25rem;
     transform: translate(-50%)
   }
-  #crew-button{
-    transform: translate(-50%);
-    top:42%;
-    margin-top:0;
-    position:fixed; 
-  }
+
   #technology-image{
     top:20%;
     transform: translate(-50%);
   }
   .technology-intro{
     top:50%;
-    transform: translate();
+    transform: translate(-13%);
     position:absolute;
-    max-width:50%;
-  }
-  #tech-buttons{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 50%);
+    width:90%;
+    margin-top:3rem !important;
   }
   #technology-button{
-    margin-left:1rem;
-    margin-right:1rem;
+    margin:0.5rem;
   }
 }
 
-
-
+@media (max-width:740px){
+  #technology-image{
+    width:100%;
+  }
+}
 
 
 #hidden:hover{

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import backgroundIMG from '/background-crew-desktop.jpg';
 import douglas from '/image-douglas-hurley.png';
 import ansari from 'image-anousheh-ansari.png';
@@ -25,11 +25,36 @@ const changeOpacity = (setter) => {
     setter("1");
 }
 
+const [backgroundHeight, setBackgroundHeight] = useState(100);
+
+useEffect(() => {
+    const handleResizes = () => {
+      if (window.innerWidth < 600) {
+        setBackgroundHeight(130);
+      } else if(window.innerWidth>600&&window.innerWidth<1200)
+        setBackgroundHeight(130);
+      else {
+        setBackgroundHeight(100);
+      }
+    };
+   
+    window.addEventListener('resize', handleResizes);
+   
+    // Call the function once to set the initial height
+    handleResizes();
+   
+    // Clean up event listener on unmount
+    return () => {
+      window.removeEventListener('resize', handleResizes);
+    };
+   }, []);
+   
+
     return (
         <div style={{backgroundImage:`url(${backgroundIMG})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
-        height: '100vh',
+        height: `${backgroundHeight}%`,
         position:"absolute",
         zIndex:"1",
         width: '100%'}}>
@@ -37,10 +62,10 @@ const changeOpacity = (setter) => {
             <h5 id="destination"><span style={{opacity:0.25}}>02&nbsp;</span>MEET YOUR CREW</h5>
 
             <div id="introduction">
-                <h4 style={{opacity: 0.5042,marginTop:"5rem"}}>{crew.rank}</h4>
+                <h4 style={{opacity: 0.5042,marginTop:"6rem"}}>{crew.rank}</h4>
                 <h3 id="crew-name" >{crew.name}</h3>
                 <article id="crew-desc">{crew.desc}</article>
-            </div>
+            
                 <svg id="crew-button" xmlns="http://www.w3.org/2000/svg" width="132" height="15" viewBox="0 0 132 15" fill="none">
 
 
@@ -57,11 +82,12 @@ const changeOpacity = (setter) => {
                 <circle opacity={circle3Opacity}  onClick={()=>changeOpacity(setCircle3Opacity)}  cx="85.5" cy="7.5" r="7.5" fill="white"/>
                 </a>
 
-                <a onClick={()=>changeCrewMember({rank:"Mission Specialist",name:"Mark Shuttleworth",desc:"Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind the Linux-based Ubuntu operating system. Shuttleworth became the first South African to travel to space as a space tourist.",image:"image-mark-shuttleworth.png"})}>
+                <a onClick={()=>changeCrewMember({rank:"Mission Specialist",name:"Mark Shuttleworth",desc:"Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind the Linux-based Ubuntu operating system.",image:"image-mark-shuttleworth.png"})}>
 
                 <circle opacity={circle4Opacity}  onClick={()=>changeOpacity(setCircle4Opacity)} cx="124.5" cy="7.5" r="7.5" fill="white"/>
                 </a>
 </svg>
+</div>
             
             <img id="crew-image" src={crew.image}>
             </img>
