@@ -1,11 +1,6 @@
 import {useState,useEffect} from "react";
 import backgroundIMG from "/background-technology-desktop.jpg";
-import vehicle from "/image-launch-vehicle-portrait.jpg";
-import capsule from "/image-space-capsule-portrait.jpg";
-import spaceport from "/image-space-port-portrait.jpg";
-import spaceportM from "/image-space-port-landscape.jpg";
-import vehicleM from "image-space-port-landscape.jpg";
-import capsuleM from "image-space-capsule-landscape.jpg";
+import {motion} from 'framer-motion';
 
 export default function Technology(){
     const [technology, setTechnology] = useState(() => {
@@ -15,12 +10,18 @@ export default function Technology(){
         }
         return {
           name: "LAUNCH VEHICLE",
-          desc: "A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a payload from Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the most powerful in operation. Standing 150 metres tall, it's quite an awe-inspiring sight on the launch pad!",
+          desc: "A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a payload from Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the most powerful in operation.",
           image: image
         };
        });
 
-    function changeTechnology(tech){
+       interface Technology{
+        name: string;
+        desc: string;
+        image:string;
+       }
+
+    function changeTechnology(tech:Technology){
         setTechnology(tech);
     }
 
@@ -77,6 +78,9 @@ useEffect(() => {
         position:"absolute",
         zIndex:"1",
         width: '100%'}}>
+             <motion.div initial={{scale:1,opacity:0}}
+        animate={{scale:1,opacity:1}}
+        transition={{duration:0.5}} >
 
             <h5 id="destination"><span style={{opacity:0.25}}>03&nbsp;</span>SPACE LAUNCH 101</h5>
 
@@ -89,7 +93,7 @@ useEffect(() => {
             if (window.innerWidth < 1200) {
                 newImage = "/image-launch-vehicle-landscape.jpg";
             }
-            changeTechnology({name:"LAUNCH VEHICLE", desc:"A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a payload from Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the most powerful in operation. Standing 150 metres tall.", image: newImage});
+            changeTechnology({name:"LAUNCH VEHICLE", desc:"A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a payload from Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the most powerful in operation.", image: newImage});
 }}>
 
             <circle opacity="0.25" cx="40" cy="40" r="39.5"  stroke="white"/>
@@ -131,6 +135,8 @@ useEffect(() => {
                 
             </div>
             <img id="technology-image" src={technology.image}></img>
+
+            </motion.div>
         </div>
     )
 }

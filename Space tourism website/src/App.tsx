@@ -6,6 +6,7 @@ import backgroundImgDesktop from '/background-home-desktop.jpg';
 import backgroundImgMobile from '/background-home-mobile.jpg';
 import backgroundImgTablet from '/background-home-tablet.jpg';
 import Technology from './Technology';
+import {motion} from 'framer-motion';
 
 
 
@@ -52,7 +53,9 @@ function App() {
 
 export default App
 
-function Home({setCurrentSection}){
+
+
+function Home({setCurrentSection}: { setCurrentSection: (section: string) => void }){
 
   const [backgroundImage,setBackgroundImage] = useState(backgroundImgDesktop);
   const [backgroundHeight, setBackgroundHeight] = useState(100);
@@ -92,7 +95,9 @@ function Home({setCurrentSection}){
       height: `${backgroundHeight}%`,
       width: '100%'}}>
           
-          
+      <motion.div  initial={{ scale: 1, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 0.5 }} >
       <button id="explore" >EXPLORE</button>
       <button id="hidden" onClick={() => setCurrentSection('Destination')}></button>
       <div id="introduction">
@@ -102,7 +107,7 @@ function Home({setCurrentSection}){
           outer space and not hover kind of on the edge of it. Well sit back, and relax 
           because we’ll give you a truly out of this world experience!</article>
       </div>
-      
+      </motion.div>
       </div>
   )
 }

@@ -257,7 +257,9 @@ line-height: 2rem;
     position:fixed;
     bottom:60%;
   }
- 
+  h5{
+    font-size:16px
+  }
  
   #crew-name{
     font-size:2rem;

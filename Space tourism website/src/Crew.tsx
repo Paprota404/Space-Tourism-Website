@@ -1,13 +1,20 @@
 import { useState, useEffect } from "react";
 import backgroundIMG from '/background-crew-desktop.jpg';
-import douglas from '/image-douglas-hurley.png';
-import ansari from 'image-anousheh-ansari.png';
+import {motion} from 'framer-motion';
+
 
 export default function Crew(){
 
     const [crew,changeCrew] = useState({rank:"Commander",name:"DOUGLAS HURLEY",desc:"Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2.",image:"/image-douglas-hurley.png"})
 
-function changeCrewMember(crew){
+    interface Crew{
+      rank:string;
+      name:string; 
+      desc:string; 
+      image:string;
+    }
+
+function changeCrewMember(crew: Crew){
     changeCrew(crew);
 }
 
@@ -17,7 +24,7 @@ function changeCrewMember(crew){
     const [circle4Opacity, setCircle4Opacity] = useState("0.174");
 
 
-const changeOpacity = (setter) => {
+const changeOpacity = (setter: (value: string) => void) => {
     setCircle1Opacity("0.174");
     setCircle2Opacity("0.174");
     setCircle3Opacity("0.174");
@@ -30,7 +37,7 @@ const [backgroundHeight, setBackgroundHeight] = useState(100);
 useEffect(() => {
     const handleResizes = () => {
       if (window.innerWidth < 600) {
-        setBackgroundHeight(130);
+        setBackgroundHeight(140);
       } else if(window.innerWidth>600&&window.innerWidth<1200)
         setBackgroundHeight(130);
       else {
@@ -58,6 +65,10 @@ useEffect(() => {
         position:"absolute",
         zIndex:"1",
         width: '100%'}}>
+
+          <motion.div initial={{scale:1,opacity:0}}
+        animate={{scale:1,opacity:1}}
+        transition={{duration:0.5}} >
 
             <h5 id="destination"><span style={{opacity:0.25}}>02&nbsp;</span>MEET YOUR CREW</h5>
 
@@ -91,6 +102,8 @@ useEffect(() => {
             
             <img id="crew-image" src={crew.image}>
             </img>
+
+            </motion.div>
 
         </div>
     )

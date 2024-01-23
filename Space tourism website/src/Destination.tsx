@@ -1,16 +1,21 @@
 import backgroundImg from '/background-destination-desktop.jpg';
-import Moon from '/image-moon.png';
 import { useState, useEffect } from 'react';
-import Mars from '/image-mars.png';
-import Titan from '/image-titan.png';
-import Europa from '/image-europa.png'
 import backgroundImgMobile from "/background-destination-mobile.jpg";
+import {motion} from "framer-motion";
 
 export default function Destination(){
 
     const [planet,setPlanet] = useState({name:"MOON",desc:"See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.",dist:"384,400 km",time:"3 days",link:"/image-moon.png"});
 
-function changePlanet(planeta){
+    interface Planeta{
+      name:string; 
+      desc:string; 
+      link:string;
+      dist:string;
+      time:string;
+    }
+
+function changePlanet(planeta:Planeta){
     setPlanet(planeta);
 }
 const [backgroundImage,setBackgroundImage] = useState(backgroundImg);
@@ -19,7 +24,7 @@ const [backgroundHeight, setBackgroundHeight] = useState(100);
 useEffect(() => {
   const handleResizes = () => {
     if (window.innerWidth < 600) {
-      setBackgroundHeight(170);
+      setBackgroundHeight(180);
     } else if(window.innerWidth>600&&window.innerWidth<1200)
       setBackgroundHeight(140);
     else {
@@ -76,6 +81,10 @@ useEffect(() => {
         zIndex:"1",
         width: '100%'}}>
 
+        <motion.div initial={{scale:1,opacity:0}}
+        animate={{scale:1,opacity:1}}
+        transition={{duration:0.5}} >
+
             <h5 id="destination"><span style={{opacity:0.25}}>01&nbsp;</span> PICK YOUR DESTINATION</h5>
             <img id="planet" src={planet.link}></img>
 
@@ -101,7 +110,12 @@ useEffect(() => {
         <span id="subheading">{planet.dist}</span>
         <span id="subheading">{planet.time}</span>
         </div>
+        
     </div>
+
+    </motion.div>
+    
+
 </div>
     )
 }
