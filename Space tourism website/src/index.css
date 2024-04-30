@@ -2,6 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Bellefair&family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&family=Roboto&display=swap');
 
+.skeleton-screen {
+  background-color: black; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:absolute;
+  height: 100vh; 
+  width: 100%;
+ }
+
 #navbar{
   width:830px;
   background: rgba(255, 255, 255, 0.04);
@@ -320,6 +330,7 @@ line-height: 2rem;
   }
   #planet{
     width:20%;
+    margin-top:2rem;
   }
   #technology-button{
     width:4rem !important;
@@ -396,6 +407,7 @@ line-height: 2rem;
   #destination{
     top: 12%;
     left:5%;
+    
   }
   h5{
     font-size:20px;
