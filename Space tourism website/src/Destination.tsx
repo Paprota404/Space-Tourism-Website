@@ -83,7 +83,19 @@ export default function Destination() {
         onLoad={handleImageLoad}
       />
       {!imageLoaded ? (
-        <div className="skeleton-screen"></div>
+        <div className="skeleton-screen">
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "center",
+            }}
+          >
+            <p>Loading...</p>
+          </div>
+        </div>
       ) : (
       <div
         style={{

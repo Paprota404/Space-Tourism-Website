@@ -55,8 +55,6 @@ function App() {
   );
 }
 
-//ma sie zmieniac backgroudn image on resize
-
 export default App;
 
 function Home({
@@ -102,7 +100,20 @@ function Home({
         onLoad={handleImageLoad}
       />
       {!imageLoaded ? (
-        <div className="skeleton-screen"></div>
+        <div className="skeleton-screen">
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "center",
+              fontSize: "3rem"
+            }}
+          >
+            <p>Loading...</p>
+          </div>
+        </div>
       ) : (
         <div
           style={{

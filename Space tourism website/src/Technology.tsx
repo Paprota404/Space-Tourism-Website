@@ -85,7 +85,7 @@ export default function Technology() {
         onLoad={handleImageLoad}
       />
 
-      {/* Conditionally render content based on imageLoaded state */}
+    
       {imageLoaded ? (
         <div
           style={{
@@ -250,7 +250,19 @@ export default function Technology() {
           </motion.div>
         </div>
       ) : (
-        <div className="skeleton-screen"></div>
+        <div className="skeleton-screen">
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "center",
+            }}
+          >
+            <p>Loading...</p>
+          </div>
+        </div>
       )}
     </>
   );
